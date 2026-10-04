@@ -1,0 +1,7 @@
+{
+  "name": "phyroze/verix",
+  "description": "Verix - lightweight API-first PHP framework",
+  "type": "project",
+  "require": {"php": ">=8.2"},
+  "autoload": {"psr-4": {"Verix\\Core\\": "core/", "App\\": "app/"}}
+}

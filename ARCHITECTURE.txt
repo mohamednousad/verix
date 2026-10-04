@@ -1,0 +1,72 @@
+verix/
+├── app/
+│   ├── Controllers/
+│   ├── Models/
+│   ├── Services/
+│   ├── Middleware/
+│   ├── Validators/
+│   └── Policies/
+├── core/
+│   ├── Foundation/     Application, Container, Config
+│   ├── Http/           Request, Response, JsonResponse
+│   ├── Routing/        Router, Route
+│   ├── Database/       Database, QueryBuilder, Model
+│   ├── Auth/           Auth, JWT, TokenManager, PasswordHasher
+│   ├── Security/       RateLimiter, Encryption, Cors, SecurityHeaders
+│   ├── Cache/          Cache, DatabaseCache, NullCache
+│   ├── Storage/        UploadManager
+│   ├── Validation/     Validator
+│   ├── Mail/           Mailer
+│   ├── Exceptions/     Handler
+│   └── Support/        Env, Helpers
+├── bootstrap/
+│   ├── autoload.php
+│   └── app.php
+├── routes/
+│   └── api.php
+├── database/
+│   ├── schema.sql
+│   ├── migrations/
+│   └── seeders/
+├── storage/
+│   └── uploads/
+├── public/
+│   ├── index.php
+│   ├── setup.php
+│   └── .htaccess
+├── tests/
+├── vendor/
+│   └── PHPMailer/src/
+├── .env
+├── .env.example
+├── .htaccess
+├── composer.json
+├── ARCHITECTURE.txt
+└── README.md
+
+NO storage/logs directory.
+NO Logger.php.
+NO application log files.
+NO file cache by default.
+All runtime configuration is controlled from .env.
+
+REQUEST FLOW
+Client (React / Electron / Mobile / Vue)
+  ↓ HTTPS
+public/index.php
+  ↓
+bootstrap/app.php
+  ↓
+Router
+  ↓
+Middleware (rate limit / auth / authorization)
+  ↓
+Controller
+  ↓
+Service
+  ↓
+Model / QueryBuilder (PDO prepared statements)
+  ↓
+MySQL
+  ↓
+JSON Response
